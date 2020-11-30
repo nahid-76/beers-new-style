@@ -1,0 +1,22 @@
+.rec.rec-arrow.rec:focus {
+    background-color: #e920ad;
+    outline: none;
+}
+.rec.rec-arrow.rec:hover {
+    background-color: #e920ad;
+}
+.rec.rec-arrow.rec{
+    background-color: #fae5fc; 
+    box-shadow: none; 
+}
+.rec.rec-dot.rec.rec-dot_active{
+    background-color: #e920ad;
+    box-shadow: 0 0 1px 3px #e920ad
+}
+.rec.rec-pagination{
+/* margin-top: -125px; */
+display: none;
+}
+.rec.rec-carousel-wrapper{
+    margin-top: -4rem;
+}

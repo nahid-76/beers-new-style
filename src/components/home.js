@@ -1,9 +1,20 @@
-import React from 'react';
-import StoreCard from './commons/card'
+import React, { useState, useEffect } from 'react';
+import { getbeers } from '../serveces/beerService';
+import ItemsCarousel from './commons/carousel'
+import SearchBar from './commons/searchbar'
 const Home = () => {
+    const [beers, setBeers] = useState([]);
+    useEffect(() => {
+        (async () => {
+            const { data } = await getbeers();
+            setBeers(data);
+        })();
+    }, []);
     return (
         <>
-            <StoreCard/>
+            <SearchBar />
+            <ItemsCarousel data={beers} />
+
         </>
     );
 }

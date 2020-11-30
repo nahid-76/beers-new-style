@@ -1,31 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import '../styles/navbar.css'
 
 const NavBar = () => {
+    const [backgroundchange, setBackGroundChange] = useState(false);
+    const changeBackground = () => {
+        if (window.scrollY >= 80) {
+            setBackGroundChange(true);
+        }
+        else {
+            setBackGroundChange(false);
+        }
+    }
+    window.addEventListener('scroll', changeBackground);
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" variant="light" className="navstyle">
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toogler"/>
-                <Navbar.Collapse id="responsive-navbar-nav" className="responsive-navbar">
+            <Navbar collapseOnSelect expand="lg" variant="light">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toogler" />
+                <Navbar.Collapse id="responsive-navbar-nav" className={backgroundchange ? "responsive-navbar backcolorchange" : "responsive-navbar"}>
                     <Nav>
                         <Nav.Link as={Link} className="nav-link" to="/shopingCard">
-                        <i className="fa fa-shopping-cart ml-1" aria-hidden="true"></i>
-                            <span>سبد خرید</span>
+                            <div className="circle-icon">
+                                <i className="fa fa-shopping-cart ml-1" aria-hidden="true"></i>
+                            </div>
                         </Nav.Link>
 
                         <Nav.Link as={Link} className="nav-link" to="/favorites">
-                        <i className="fa fa-star-o ml-1" aria-hidden="true"></i>
-                            <span>علاقه مندی ها</span>
+                            <div className="circle-icon">
+                                <i className="fa fa-star-o ml-1" aria-hidden="true"></i>
+                            </div>
                         </Nav.Link>
 
                         <Nav.Link as={Link} className="nav-link" to="/home">
-                        <i className="fa fa-home ml-1" aria-hidden="true"></i>
-                            <span>صفحه اصلی</span>
+                            <div className="circle-icon">
+                                <i className="fa fa-home ml-1" aria-hidden="true"></i>
+                            </div>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                <Navbar.Brand href="#home">Beers Store</Navbar.Brand>
             </Navbar>
         </>
     );
