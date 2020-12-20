@@ -1,0 +1,31 @@
+.dropdown{
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-bottom: 4rem;
+}
+.btn.btn-secondary.dropdown-toggle{
+width: 12rem;
+background-color: #e920ad;
+border: none;
+color: #eee;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: .7rem;
+border-radius: 15px;
+}
+.btn.btn-secondary.dropdown-toggle:active{
+    background-color: red;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #e920ad;
+}
+.dropdown-menu.show {
+    display: block;
+    background-color: #fae5fc;
+}
+.dropdown-item:hover {
+    background-color: #e920ad;
+}

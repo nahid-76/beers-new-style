@@ -1,42 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardImage,
   Container,
   AddButton,
   CardContent,
-  CardContentHeader,
   BrifInfo,
   TopInfo,
   ButtomInfo,
   CardContentText,
-  FavIcon
 } from "../../styles/cardstyle";
-import MyExpandCollapse from './MyExpandCollapse'
-const StoreCard = ({ imageSrc, name, abv, description,price}) => {
+import { toast } from "react-toastify";
+import { ShopingItemsContext } from '../../contexts/shopingitemscontext'
+import { FavsContext } from '../../contexts/favoritescontext'
+import Star from './star'
+
+const StoreCard = ({ imageSrc, name, tagline, price, id }) => {
+  const { favs, handleFavs } = useContext(FavsContext);
+  const { handleShopItems } = useContext(ShopingItemsContext);
+  const onShopingBasketButtonClick = () => {
+    handleShopItems(id) ?
+      toast.error(`در سبد خرید وجود دارد:${name}`) :
+      toast.success(`به سبد خرید اصافه شد:${name}`);
+  }
   return (
     <>
       <Container>
         <Card>
           <CardImage src={imageSrc} />
-          <FavIcon>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </FavIcon>
+          <Star onStarClick={() => handleFavs(id)} isStarActive={favs.includes(id)} />
           <CardContent>
-            <CardContentHeader>
-              <AddButton>+</AddButton>
               <BrifInfo>
                 <TopInfo>{name}</TopInfo>
                 <ButtomInfo>${price}</ButtomInfo>
               </BrifInfo>
-            </CardContentHeader>
-            <CardContentText>
-              <MyExpandCollapse
-                text={description}
-              />
-
-            </CardContentText>
+            <CardContentText>{tagline}</CardContentText>
           </CardContent>
+              <AddButton onClick={onShopingBasketButtonClick}>+</AddButton>
         </Card>{" "}
       </Container>
     </>

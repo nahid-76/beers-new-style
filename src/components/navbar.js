@@ -20,7 +20,7 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toogler" />
                 <Navbar.Collapse id="responsive-navbar-nav" className={backgroundchange ? "responsive-navbar backcolorchange" : "responsive-navbar"}>
                     <Nav>
-                        <Nav.Link as={Link} className="nav-link" to="/shopingCard">
+                        <Nav.Link as={Link} className="nav-link" to="/shopingbasket">
                             <div className="circle-icon">
                                 <i className="fa fa-shopping-cart ml-1" aria-hidden="true"></i>
                             </div>

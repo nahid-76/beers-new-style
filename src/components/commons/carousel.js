@@ -18,7 +18,8 @@ const ItemsCarousel = ({ data }) => {
                             imageSrc={d.image_url}
                             name={d.name}
                             price={d.srm}
-                            description={d.description}
+                            tagline={d.tagline}
+                            id={d.id}
 
                         />
                     );
